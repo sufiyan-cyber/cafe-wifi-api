@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean
+
 import os
 
 '''
@@ -146,7 +147,8 @@ def pricing(id):
 # HTTP DELETE - Delete Record
 
 
-API_KEY = "supersecretkey123"  # store securely in env variables in real apps
+API_KEY=os.environ.get("apikey")
+  # store securely in env variables in real apps
 
 @app.route("/report-closed/<int:id>", methods=["DELETE"])
 def deleting(id):
