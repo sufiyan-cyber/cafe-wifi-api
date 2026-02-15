@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe & Wifi API</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body{
+        background: linear-gradient(135deg,#0f172a,#020617);
+        color:#e5e7eb;
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    .card{
+        background:#111827;
+        border:none;
+        border-radius:18px;
+        padding:45px;
+        box-shadow:0 20px 60px rgba(0,0,0,.65);
+        max-width:780px;
+        width:95%;
+    }
+
+    h1{
+        font-weight:700;
+        color:#f9fafb;
+    }
+
+    .lead{
+        color:#9ca3af;
+        font-size:1.1rem;
+    }
+
+    h4,h5{
+        color:#f3f4f6;
+    }
+
+    .endpoint{
+        background:#020617;
+        padding:12px 16px;
+        border-radius:10px;
+        font-family:monospace;
+        margin-bottom:12px;
+        color:#e5e7eb;
+        border:1px solid #1f2937;
+    }
+
+    hr{
+        border-color:#374151;
+        margin:28px 0;
+    }
+
+    .btn-docs{
+        background:#22c55e;
+        border:none;
+        color:white;
+        font-weight:600;
+        padding:12px 22px;
+        border-radius:10px;
+        text-decoration:none;
+        display:inline-block;
+        margin-top:10px;
+    }
+
+    .btn-docs:hover{
+        background:#16a34a;
+        color:white;
+    }
+
+    .footer{
+        color:#6b7280;
+        margin-top:25px;
+        font-size:0.9rem;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="card text-center">
+
+```
+<h1 class="mb-3">☕ Cafe & Wifi API</h1>
+<p class="lead">A RESTful API service for discovering and managing cafes.</p>
+
+<hr>
+
+<h4>Available Endpoints</h4>
+
+<div class="text-start mt-3">
+
+    <div class="endpoint">GET /all → List all cafes</div>
+    <div class="endpoint">GET /random → Random cafe suggestion</div>
+    <div class="endpoint">GET /search?loc=city → Search cafes by location</div>
+    <div class="endpoint">PATCH /update-price?id=&new_price= → Update coffee price</div>
+    <div class="endpoint">DELETE /report-closed?id=&api_key= → Delete cafe</div>
+
+</div>
+
+<hr>
+
+<h5>Interactive API Documentation</h5>
+<p>You can test every endpoint directly from the live documentation interface.</p>
+
+<!-- PASTE YOUR POSTMAN DOCUMENTATION LINK BELOW -->
+<a href="https://documenter.getpostman.com/view/52395039/2sBXcBo3HV" target="_blank" class="btn-docs">
+    Open API Documentation
+</a>
+
+<div class="footer">
+    Built using Python Flask • SQLAlchemy • Hosted on Render
+</div>
+```
+
+</div>
+
+</body>
+</html>
