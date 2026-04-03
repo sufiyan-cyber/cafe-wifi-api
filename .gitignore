@@ -5,3 +5,51 @@ __pycache__/
 *.db
 .DS_Store
 .env
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Virtual environment
+venv/
+env/
+
+# Python cache
+
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables (CRITICAL)
+
+
+# Local database files
+
+*.sqlite3
+
+# IDE files
+
+.vscode/
+
+# OS files
+
+Thumbs.db
+
+# Logs
+*.log
+
+
+
+# Build / dist
+build/
+dist/
+
+# Elastic Beanstalk local config (optional)
+.elasticbeanstalk/*.log
+
+# Docker (optional ignore if not using actively)
+docker-compose.override.yml
+
+# Misc
+*.swp

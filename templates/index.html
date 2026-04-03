@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Café Radar Bangalore — Find cafés by location, rating, cost and more.">
+  <title>Café Radar — Bangalore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ░░ HERO ░░ -->
+  <header id="hero">
+    <div class="hero-bg-text" aria-hidden="true">CAFÉ</div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Bangalore · 2067 Cafés</p>
+      <h1>Café<em>Radar</em></h1>
+      <p class="hero-sub">Discover the best cafés across Bangalore — filter by location, rating, budget, and amenities.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="loadAll()">Explore All Cafés</button>
+        <button class="btn btn-ghost" onclick="loadRandom()">Surprise Me ✦</button>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">scroll ↓</div>
+  </header>
+
+  <!-- ░░ STICKY FILTER BAR ░░ -->
+  <div id="filter-bar">
+    <div class="filter-bar-inner">
+
+      <!-- Location dropdown -->
+      <div class="filter-group">
+        <label for="loc-select">📍 Location</label>
+        <select id="loc-select">
+          <option value="">All Areas</option>
+        </select>
+      </div>
+
+      <!-- Min rating -->
+      <div class="filter-group">
+        <label for="rating-select">⭐ Min Rating</label>
+        <select id="rating-select">
+          <option value="">Any</option>
+          <option value="4.0">4.0+</option>
+          <option value="4.2">4.2+</option>
+          <option value="4.4">4.4+</option>
+          <option value="4.6">4.6+</option>
+        </select>
+      </div>
+
+      <!-- Max cost -->
+      <div class="filter-group">
+        <label for="cost-select">💸 Max Cost</label>
+        <select id="cost-select">
+          <option value="">Any</option>
+          <option value="400">Under ₹400</option>
+          <option value="700">Under ₹700</option>
+          <option value="1000">Under ₹1000</option>
+          <option value="1500">Under ₹1500</option>
+        </select>
+      </div>
+
+      <!-- Online order toggle -->
+      <div class="filter-group">
+        <label for="online-select">🛵 Online Order</label>
+        <select id="online-select">
+          <option value="">Any</option>
+          <option value="true">Available</option>
+          <option value="false">Not Available</option>
+        </select>
+      </div>
+
+      <!-- Search button -->
+      <button class="btn btn-primary btn-sm" onclick="applyFilters()">Search</button>
+      <button class="btn btn-ghost btn-sm" onclick="resetFilters()">Reset</button>
+    </div>
+  </div>
+
+  <!-- ░░ MAIN CONTENT ░░ -->
+  <main id="main">
+
+    <!-- Status / loading -->
+    <div id="status-bar" class="status-bar hidden">
+      <span id="status-text"></span>
+    </div>
+
+    <!-- Results meta -->
+    <div id="results-meta" class="results-meta hidden">
+      <span id="results-count"></span>
+      <div class="pagination-controls" id="pagination" style="display:none">
+        <button class="btn btn-ghost btn-xs" id="btn-prev" onclick="changePage(-1)">← Prev</button>
+        <span id="page-info"></span>
+        <button class="btn btn-ghost btn-xs" id="btn-next" onclick="changePage(1)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div id="cards-grid" class="cards-grid"></div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state hidden">
+      <span class="empty-icon">☕</span>
+      <p>No cafés found for these filters.</p>
+      <button class="btn btn-ghost btn-sm" onclick="resetFilters()">Clear Filters</button>
+    </div>
+
+    <!-- Landing placeholder -->
+    <div id="landing-placeholder" class="landing-placeholder">
+      <div class="lp-grid">
+        <div class="lp-stat"><span class="lp-num">2067</span><span class="lp-label">Cafés</span></div>
+        <div class="lp-stat"><span class="lp-num">46</span><span class="lp-label">Areas</span></div>
+        <div class="lp-stat"><span class="lp-num">168</span><span class="lp-label">Cuisine Types</span></div>
+      </div>
+      <p class="lp-cta">Hit <strong>Explore All Cafés</strong> or use the filters above to get started.</p>
+    </div>
+
+  </main>
+
+  <!-- ░░ CAFE DETAIL MODAL ░░ -->
+  <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer id="site-footer">
+    <p>Café Radar · Bangalore · Built with Flask &amp; Vanilla JS</p>
+    <a href="https://documenter.getpostman.com/view/52395039/2sBXinJAnk#cafe-radar-api" target="_blank" class="footer-link">API Docs →</a>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+</html>
