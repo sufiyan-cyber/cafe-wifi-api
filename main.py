@@ -27,7 +27,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
-logging.info(f"DB URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+
+logging.info("DB URI loaded from environment")
 
 
 # ── Model ────────────────────────────────────────────────────
@@ -68,10 +69,11 @@ class Cafe(db.Model):
             'listed_in_city': self.listed_in_city,
         }
 
-
+'''
+this here is not needed once u switch to cloud This block runs at startup and tries to connect to DB before workers are ready, causing the timeout
 with app.app_context():
     db.create_all()
-
+'''
 
 # ── API Key ──────────────────────────────────────────────────
 API_KEY = os.getenv("API_KEY", "defaultkey")
