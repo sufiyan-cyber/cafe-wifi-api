@@ -40,6 +40,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Zip application
+        run: zip -r deploy.zip . -x "*.git*" -x ".venv/*" -x "__pycache__/*"
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
@@ -49,4 +52,4 @@ jobs:
           environment_name: cafe-radar-env
           region: ap-south-2
           version_label: ${{ github.sha }}
-          deployment_package: .
+          deployment_package: deploy.zip
