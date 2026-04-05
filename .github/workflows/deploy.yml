@@ -40,22 +40,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v22
         with:
-          python-version: '3.11'
-
-      - name: Install EB CLI
-        run: pip install awsebcli
-
-      - name: Deploy to Elastic Beanstalk
-        env:
-
-
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ap-south-2
-        run: |
-          
-          eb init cafe-radar --platform python-3.11 --region ap-south-2 --nohang
-          eb deploy cafe-radar-env --region ap-south-2 --nohang
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: cafe-radar
+          environment_name: cafe-radar-env
+          region: ap-south-2
+          version_label: ${{ github.sha }}
+          deployment_package: .
