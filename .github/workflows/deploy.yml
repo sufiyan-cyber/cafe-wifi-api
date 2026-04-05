@@ -26,7 +26,7 @@ jobs:
 
       - name: Run pytest
         env:
-          DATABASE_URL: sqlite:///:memory:
+          DATABASE_URL: "sqlite:///:memory:"
           API_KEY: defaultkey
         run: pytest test_main.py -v
 
