@@ -55,7 +55,7 @@
 
 ## Dataset
 
-- **Source:** Zomato Bangalore dataset (Kaggle)
+- **Source:**  Bangalore dataset (Kaggle)
 - **Size:** 2,067 café entries across 46 locations
 - **Cleaning pipeline:**
   - Removed nulls — filled non-critical columns, dropped only where critical fields missing
